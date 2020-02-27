@@ -1,0 +1,6 @@
+print("Enter temperature ")
+temp_C = input()
+temp_F = (int(temp_C) +32) * (5/9)
+temp_K = (int(temp_C) + 273.16)
+print(temp_F)
+print(temp_K)
