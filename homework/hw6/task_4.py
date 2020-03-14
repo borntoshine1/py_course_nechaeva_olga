@@ -1,5 +1,5 @@
-word = str("olyylo")
-#word = str(input("Enter word - "))
+word = "olyylo"
+#word = input("Enter word - ")
 
 #list(word)
 lst = list(word)
