@@ -7,4 +7,8 @@ elif len(lst1) < len(lst2):
     print("The second row is longer")
 else:
     print("|row_1|row_2|sum|")
-    print("| {}  | {}  |{}| Equal row".format(sum(lst1), sum(lst2), sum(lst1 + lst2)))
+    j = 0
+    for i in lst1:
+        sum_row = i + lst2[j]
+        print("| {} | {} | {} |".format(i, lst2[j], sum_row))
+        j+=1
