@@ -7,11 +7,9 @@ family = {
   'son_middle': ('Alex', 15),
   'son_young' : ('Mark', 9)
 }
-maxi = 0
-mini = 200
+    
+#new_lst = []
 for value in family.values():
-    if mini > value[1]:
-      mini = value[1]
-    if maxi < value[1]:
-      maxi = value[1]
-print(maxi - mini)
+  new_lst=[]
+	new_lst.append(value[1])
+print(max(new_lst)-min(new_lst)) 
