@@ -12,5 +12,9 @@ while i <= 5:
         break
     else:
         print("No it's not it, try again!")
+        if secret_number > your_numb:
+			print("Secret number is greater")
+		else:
+			print("Secret number is less")
         your_numb = int(input("Enter number again: "))
     i+=1  
