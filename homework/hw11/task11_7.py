@@ -1,8 +1,6 @@
 def xo(s):
     s = s.lower()
-    a = s.count('x')
-    b = s.count('o')
-    return a == b
+    return s.count('x') == s.count('o')
     
 print(xo('xoox'))
 print(xo('vmvfmvmn'))
