@@ -1,11 +1,6 @@
 def century(year):
-    a = year//100
-    #print(a)
-    if year%100 == 0:
-        return print(a)
-    else:
-        return print(a+1)
-
+    return year//100 if year%100 == 0 else (year//100)+1
+      
 century(1)
 century(2000)
 century(1991)
