@@ -3,7 +3,6 @@ def remove_every_other(ml):
     for i in range(len(ml)):
         if i%2 == 0:
             new_ml.append(ml[i])
-        i+=1
     return new_ml
 
 
