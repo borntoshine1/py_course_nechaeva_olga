@@ -1,9 +1,5 @@
-def is_square(n):    
-    a = n**0.5
-    if n < 0 or a%1 != 0:
-        return False
-    else:
-        return True
+def is_square(n):
+    return False if n < 0 or (n**0.5)%1 != 0 else True     
     
 print(is_square(-1))
 print(is_square(0))
