@@ -1,15 +1,15 @@
-def printer_error(s):
-    count = 0
-    for i in s:
-       if i >"m":
-          count+=1
-    return "{}/{}".format(count, len(s))
-    
-print(printer_error('wyaabdemmwz'))
-print(printer_error("wyzaamm"))
-print(printer_error("wyzaamm, ,k m "))
+def remove_every_other(ml):
+    new_ml = []
+    for i in range(len(ml)):
+        if i%2 == 0:
+            new_ml.append(ml[i])
+        i+=1
+    return new_ml
 
-#«хорошая» управляющая строка будет от а-m (aaabbbbhaijjjm), "плохая строка" от m-z. Вы должны написать функцию printer_error,
-# которая для данной строки выведет частоту ошибок в виде строки, числитель которого равен числу ошибок, 
-# а знаменатель - длину контрольной строки. Не уменьшайте эту дробь до более простого выражения.
-# Строка имеет длину, большую или равную единице, и содержит только буквы от ato z.
+
+
+print(remove_every_other(['Hello', 'Goodbye', 'Hello Again', 'Hello', 'Hello Again']))
+print(remove_every_other([1, 2, 3, 4, 5, 6]))
+
+#Возьмите массив и удалите каждый второй элемент из этого массива. 
+#Всегда оставляйте первый элемент и начинайте удаление со следующего элемента.
