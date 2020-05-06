@@ -31,7 +31,7 @@ def random_student(request):
 
 def hundred_students(request):
 
-    if request.GET['count'].find('.'):
+    if request.GET['count'].isdigit() is False:
         return HttpResponse(f"Error: must be an integer")
         
     if int(request.GET['count']) <= 0:
