@@ -21,10 +21,7 @@ class Group(models.Model):
     course_name = models.CharField(max_length=64)
     number_of_students = models.PositiveIntegerField()
 
+
 class Teacher(models.Model):
     full_name = models.CharField(max_length=64)
     number_of_hours = models.FloatField()
-    
-
-     
-    

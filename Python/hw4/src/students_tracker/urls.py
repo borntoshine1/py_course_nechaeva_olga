@@ -27,7 +27,5 @@ urlpatterns = [
 
     path('random_student/', views.random_student),
 
-    path('generate-students/', views.hundred_students), 
-
-
+    path('generate-students/', views.hundred_students),
 ]
