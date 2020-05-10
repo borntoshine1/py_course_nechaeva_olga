@@ -1,3 +1,3 @@
-from django.shortcuts import render
+from django.shortcuts import render # noqa imported unused
 
 # Create your views here.

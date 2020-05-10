@@ -8,10 +8,6 @@ from students.models import Student
 
 # Create your views here.
 
-def hello_world(request):
-    # print(request)
-    return HttpResponse('hello world')
-
 
 def students(request):
     count = Student.objects.count()
