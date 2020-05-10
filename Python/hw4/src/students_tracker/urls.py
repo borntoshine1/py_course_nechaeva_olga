@@ -21,13 +21,10 @@ from students import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('hello-world/', views.hello_world),
-
     path('students/', views.students),
 
     path('random_student/', views.random_student),
 
     path('generate-students/', views.hundred_students), 
-
 
 ]
