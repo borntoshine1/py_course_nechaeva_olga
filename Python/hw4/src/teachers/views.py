@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render # noqa imported unused
+from django.shortcuts import render
 
 from teachers.models import Teacher
 
@@ -30,3 +30,12 @@ def teachers(request):
         response += teacher.info() + '<br/>'
 
         return HttpResponse(response)
+
+
+def index(request):
+    teacher = Teacher.objects.only('first_name').get(id=12)
+    context = {
+        'name': 'Dima',
+        'teacher': teacher,
+    }
+    return render(request, 'index.html', context=context)
