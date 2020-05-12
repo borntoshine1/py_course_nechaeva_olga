@@ -29,4 +29,4 @@ def teachers(request):
     for teacher in teachers_filter:
         response += teacher.info() + '<br/>'
 
-        return HttpResponse(response)
+    return HttpResponse(response)
