@@ -25,7 +25,7 @@ from teachers import views as teacher_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('',teacher_views.index),
+    path('', teacher_views.index),
 
     path('students/', views.students),
 

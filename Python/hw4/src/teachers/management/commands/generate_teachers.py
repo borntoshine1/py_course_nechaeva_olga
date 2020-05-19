@@ -4,6 +4,7 @@ from faker import Faker
 
 from teachers.models import Teacher
 
+
 class Command(BaseCommand):
     help = 'Generate random teachers' # noqa is a python builtin
 
