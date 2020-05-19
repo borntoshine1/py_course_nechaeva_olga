@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from teachers.models import Teacher
@@ -33,9 +33,22 @@ def teachers(request):
 
 
 def index(request):
-    teacher = Teacher.objects.only('first_name').get(id=12)
-    context = {
-        'name': 'Dima',
-        'teacher': teacher,
-    }
-    return render(request, 'index.html', context=context)
+
+    return render(request, 'index1.html')
+
+
+def create_teacher(request):
+    from teachers.forms import TeacherCreateForm
+
+    if request.GET:
+        form = TeacherCreateForm(request.GET)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = TeacherCreateForm(request.GET)
+
+    context = {'create_form': form}
+
+    return render(request, 'create_teachers.html', context=context)
