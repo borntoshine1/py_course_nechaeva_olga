@@ -13,12 +13,19 @@ def students(request):
     count = Student.objects.count()
     students_query = Student.objects.all()
 
-    response = f'students:  {count}<br/>'
+    params = [
+        'age',
+        'first_name',
+        'last_name',
+        'id',
+    ]
 
-    for student in students_query:
-        response += student.info() + '<br/>'
+    for param in params:
+        value = request.GET.get(param)
+        if value:
+            students_query = students_query.filter(**{param: value})
 
-    return HttpResponse(response)
+    return render(request, 'students-list.html', contex={'students': students_query})
 
 
 def random_student(request):

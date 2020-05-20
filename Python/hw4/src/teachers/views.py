@@ -13,7 +13,6 @@ def teachers(request):
     first_name = request.GET.get('first_name')
     last_name = request.GET.get('last_name')
 
-    teachers_filter = Teacher.objects.all()
 
     if age:
         teachers_filter = teachers_filter.filter(age=age)
@@ -29,7 +28,7 @@ def teachers(request):
     for teacher in teachers_filter:
         response += teacher.info() + '<br/>'
 
-    return HttpResponse(response)
+    return render(request, 'teachers-list.html', context={'students': response})
 
 
 def index(request):
