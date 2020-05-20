@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render # noqa imported but unused
+from django.urls import reverse
 
 from faker import Faker
 
@@ -7,6 +8,10 @@ from students.models import Student
 
 
 # Create your views here.
+
+def index(request):
+
+    return render(request, 'index_st.html')
 
 
 def students(request):
@@ -25,7 +30,43 @@ def students(request):
         if value:
             students_query = students_query.filter(**{param: value})
 
-    return render(request, 'students-list.html', contex={'students': students_query})
+    return render(request, 'students-list.html', context={'students': students_query})
+
+
+def create_students(request):
+    from students.forms import StudentCreateForm
+
+    if request.method == 'POST':
+        form = StudentCreateForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('students:list'))
+    elif request.method == 'GET':
+        form = StudentCreateForm()
+
+    context = {'create_form': form}
+
+    return render(request, 'create_students.html', context=context)
+
+
+def edit_students(request):
+    from students.forms import StudentCreateForm
+
+    student = Student.objects.first()
+
+    if request.method == 'POST':
+        form = StudentCreateForm(request.POST, instance=student)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('students:list'))
+    elif request.method == 'GET':
+        form = StudentCreateForm(instance=student)
+
+    context = {'form': form}
+
+    return render(request, 'edit.html', context=context)
 
 
 def random_student(request):

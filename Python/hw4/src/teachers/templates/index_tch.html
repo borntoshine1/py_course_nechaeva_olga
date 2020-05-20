@@ -8,12 +8,7 @@
 <body>
     
 
-<a href="{% url 'index' %}">Index</a>
-<a href="{% url 'students:create' %}">Create Student</a>
-
-{% for student in students %}
-    {{ student.id }} {{ student.full_name }}<br>
-{% endfor %}
+<a href="{% url 'create' %}">Create teacher</a>
 
 
 
