@@ -12,8 +12,13 @@ EDIT STUDENTS
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Submit</button>
+    <button type="submit">Submit</button> <button type="submit" form="deleteform">Delete</button>
 </form>
+<form action="{% url 'students:delete' pk=id %}" id="deleteform">
+    {% csrf_token %}   
+</form>
+
+
 
 
 </body>

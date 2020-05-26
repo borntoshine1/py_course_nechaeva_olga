@@ -1,10 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render # noqa imported but unused
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from faker import Faker
 
+from students.forms import StudentCreateForm
 from students.models import Student
+
 
 
 # Create your views here.
@@ -34,7 +37,6 @@ def students(request):
 
 
 def create_students(request):
-    from students.forms import StudentCreateForm
 
     if request.method == 'POST':
         form = StudentCreateForm(request.POST)
@@ -50,10 +52,10 @@ def create_students(request):
     return render(request, 'create_students.html', context=context)
 
 
-def edit_students(request):
-    from students.forms import StudentCreateForm
-
-    student = Student.objects.first()
+@csrf_exempt
+def edit_students(request, pk):
+    
+    student=get_object_or_404(Student, id=pk)
 
     if request.method == 'POST':
         form = StudentCreateForm(request.POST, instance=student)
@@ -64,9 +66,16 @@ def edit_students(request):
     elif request.method == 'GET':
         form = StudentCreateForm(instance=student)
 
-    context = {'form': form}
+    context = {'form': form, 'id': student.id}
 
     return render(request, 'edit.html', context=context)
+
+
+def delete_student(request, pk):
+    student=get_object_or_404(Student, id=pk)
+    student.delete()
+    return HttpResponseRedirect(reverse('students:list'))
+
 
 
 def random_student(request):

@@ -8,7 +8,10 @@
 <body>
     
 
-<a href="{% url 'group:list' %}">Create group</a>
+<form action="{% url 'students:delete' pk=student.id %}">Index</a>
+    {% csrf_token %}
+    <input type="submit" value="Delete cat">
+</form>
 
 
 
