@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.conf import settings # noqa imported but unused
 from django.urls import path
 
 from group import views

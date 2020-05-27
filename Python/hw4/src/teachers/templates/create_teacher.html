@@ -8,11 +8,12 @@
 <body>
     
 
-<form action="{% url 'students:delete' pk=student.id %}">Index</a>
+CREATE TEACHERS
+<form method="post">
     {% csrf_token %}
-    <input type="submit" value="Delete cat">
+    {{ create_form.as_p }}
+    <button type="submit">Submit</button>
 </form>
-
 
 
 </body>

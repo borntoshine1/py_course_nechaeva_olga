@@ -1,7 +1,9 @@
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+from django.template import RequestContext # noqa imported but unused
+
 
 from faker import Faker
 
@@ -9,16 +11,12 @@ from students.forms import StudentCreateForm
 from students.models import Student
 
 
-
-# Create your views here.
-
 def index(request):
 
     return render(request, 'index_st.html')
 
 
 def students(request):
-    count = Student.objects.count()
     students_query = Student.objects.all()
 
     params = [
@@ -54,8 +52,8 @@ def create_students(request):
 
 @csrf_exempt
 def edit_students(request, pk):
-    
-    student=get_object_or_404(Student, id=pk)
+
+    student = get_object_or_404(Student, id=pk)
 
     if request.method == 'POST':
         form = StudentCreateForm(request.POST, instance=student)
@@ -72,10 +70,9 @@ def edit_students(request, pk):
 
 
 def delete_student(request, pk):
-    student=get_object_or_404(Student, id=pk)
+    student = get_object_or_404(Student, id=pk)
     student.delete()
     return HttpResponseRedirect(reverse('students:list'))
-
 
 
 def random_student(request):
