@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render # noqa imported unused
 
-# Create your views here.
+from group.forms import GroupCreateForm
 
 
 def index(request):
@@ -10,7 +10,6 @@ def index(request):
 
 
 def create_group(request):
-    from group.forms import GroupCreateForm
 
     if request.GET:
         form = GroupCreateForm(request.GET)
