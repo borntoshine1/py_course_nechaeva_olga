@@ -8,7 +8,6 @@ from students.models import Student
 
 # Create your views here.
 
-
 def students(request):
     count = Student.objects.count()
     students_query = Student.objects.all()
@@ -35,7 +34,6 @@ def hundred_students(request):
 
     if count.isdigit() is False:
         return HttpResponse(f"Error: must be an integer")
-
     if int(count) <= 0:
         return HttpResponse(f"Error: count must be greater than zero")
 
