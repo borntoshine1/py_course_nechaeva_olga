@@ -14,11 +14,12 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         value = kwargs['value']
         fake = Faker()
+        teacher = Teacher(
+            first_name=fake.first_name(),
+            last_name=fake.last_name(),
+            age=fake.pyint(20, 90, 1),
+            number_of_hours=fake.pyint(0, 200, 1),
+            subject=fake.license_plate()
+        )
         for _ in range(value):
-            Teacher.objects.create(
-                first_name=fake.first_name(),
-                last_name=fake.last_name(),
-                age=fake.pyint(20, 90, 1),
-                number_of_hours=fake.pyint(0, 200, 1),
-                subject=fake.license_plate()
-            )
+            Teacher.objects.bulk_create([teacher])

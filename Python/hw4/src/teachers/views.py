@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render # noqa imported unused
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 
 from teachers.models import Teacher
 
@@ -30,3 +30,25 @@ def teachers(request):
         response += teacher.info() + '<br/>'
 
     return HttpResponse(response)
+
+
+def index(request):
+
+    return render(request, 'index1.html')
+
+
+def create_teacher(request):
+    from teachers.forms import TeacherCreateForm
+
+    if request.GET:
+        form = TeacherCreateForm(request.GET)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = TeacherCreateForm(request.GET)
+
+    context = {'create_form': form}
+
+    return render(request, 'create_teachers.html', context=context)
