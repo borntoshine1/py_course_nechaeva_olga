@@ -8,8 +8,12 @@
 <body>
     
 
-<a href="/create_teachers/">Create teacher</a>
-
+CREATE TEACHERS
+<form method="post">
+    {% csrf_token %}
+    {{ create_form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 
 
 </body>
