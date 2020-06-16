@@ -26,8 +26,8 @@ def forwards(apps, schema):
         student.last_name = student.last_name.capitalize()
         student.save(update_fields=['last_name'])
 
-def backwards(apps, schema):
-    print('forwards')
+#def backwards(apps, schema):
+    #print('forwards')
 
 
 class Migration(migrations.Migration):
@@ -37,5 +37,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(forwards, backwards),
+        migrations.RunPython(forwards),
     ]

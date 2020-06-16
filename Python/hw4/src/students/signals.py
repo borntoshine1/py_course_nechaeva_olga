@@ -7,10 +7,10 @@ from students.models import Student
 def pre_save_student(sender, instance, **kwargs):
     instance.phone = ''.join(i for i in instance.phone if i.isdigit())
 
+@receiver(pre_save, sender=Student)
 def pre_save_student_capitalize(sender, instance, **kwargs):
     instance.first_name = instance.first_name.capitalize()
     instance.last_name = instance.last_name.capitalize()
 
-@receiver(post_save, sender=Student)
-def post_save_student(sender, instance, **kwargs):
-    print('post_save')
+#@receiver(post_save, sender=Student)
+#def post_save_student(sender, instance, **kwargs):
